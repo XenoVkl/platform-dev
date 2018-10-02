@@ -1,7 +1,6 @@
 {
   "require": {
     "php": ">=5.4.0",
-    "brightlocal/phpwhois": "4.2.4",
     "drupal/phingdrushtask": "^1.1",
     "drupol/phingbehattask": "^1.0",
     "drush/drush": "8.0.5",
