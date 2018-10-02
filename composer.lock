@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "09389f83f2fefdb7ce582cb33d886a7b",
+    "content-hash": "882a9053fcc1c1e40440198e32f0ccc1",
     "packages": [
+        {
+            "name": "brightlocal/phpwhois",
+            "version": "4.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BrightLocal/phpWhois.git",
+                "reference": "621a045a13de5569746f3d13783ca1cac50339aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BrightLocal/phpWhois/zipball/621a045a13de5569746f3d13783ca1cac50339aa",
+                "reference": "621a045a13de5569746f3d13783ca1cac50339aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "lib-openssl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/whois.main.php",
+                    "src/whois.utils.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Jeftovic",
+                    "email": "markjr@easydns.com"
+                },
+                {
+                    "name": "David Saez Padros",
+                    "email": "david@ols.es"
+                },
+                {
+                    "name": "Ross Golder",
+                    "email": "ross@golder.org"
+                },
+                {
+                    "name": "Dmitry Lukashin",
+                    "email": "dmitry@lukashin.ru"
+                }
+            ],
+            "description": "phpWhois - library for querying whois services and parsing results. Based on phpwhois.org",
+            "homepage": "http://phpwhois.pw",
+            "keywords": [
+                "php",
+                "phpwhois",
+                "whois"
+            ],
+            "time": "2014-12-25T16:29:59+00:00"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.1.2",
