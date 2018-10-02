@@ -10,10 +10,10 @@ try {
                 deleteDir()
                 checkout scm
                 sh 'COMPOSER_CACHE_DIR=/dev/null composer install --no-suggest'
+                sh './bin/security-checker -q security:check composer.lock'
+                sh './bin/security-checker -q security:check resources/composer.lock'
                 sh './bin/phing setup-php-codesniffer'
                 sh './bin/phpcs --report=full --report=source --report=summary -s'
-                sh './bin/security-checker security:check composer.lock'
-                sh './bin/security-checker security:check resources/composer.lock'
             }
         }
     }
