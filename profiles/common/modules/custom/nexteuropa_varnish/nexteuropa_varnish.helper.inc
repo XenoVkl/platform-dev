@@ -86,3 +86,21 @@ function _nexteuropa_varnish_get_settings_item_names() {
     'nexteuropa_varnish_http_timeout' => 'varnish_http_timeout',
   );
 }
+
+/**
+ * Delete cache_nexteuropa_varnish table.
+ *
+ * @see NEPT-2055
+ */
+function nexteuropa_delete_varnish_cache_table() {
+  $tables = array(
+    'nexteuropa_varnish_cache_purge_rule',
+    NEXTEUROPA_VARNISH_CACHE_TABLE,
+  );
+
+  foreach ($tables as $table) {
+    if (db_table_exists($table)) {
+      db_drop_table($table);
+    }
+  }
+}

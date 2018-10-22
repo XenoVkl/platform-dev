@@ -122,8 +122,8 @@ function nexteuropa_varnish_uninstall() {
   foreach ($vars as $var) {
     variable_del($var);
   }
-  
-  _nexteuropa_delete_varnish_cache_table();
+  // Remove related tables.
+  nexteuropa_delete_varnish_cache_table();
 }
 
 /**
@@ -177,16 +177,17 @@ function nexteuropa_varnish_update_7102() {
 }
 
 /**
- *  Delete cache_nexteuropa_varnish table.
+ * Delete cache_nexteuropa_varnish table.
+ *
  * @see NEPT-2055
  */
-function _nexteuropa_delete_varnish_cache_table() {
+function nexteuropa_delete_varnish_cache_table() {
   $tables = array(
     'nexteuropa_varnish_cache_purge_rule',
     NEXTEUROPA_VARNISH_CACHE_TABLE,
   );
 
-  foreach($tables as $table) {
+  foreach ($tables as $table) {
     if (db_table_exists($table)) {
       db_drop_table($table);
     }
