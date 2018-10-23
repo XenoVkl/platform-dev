@@ -92,7 +92,8 @@ function _nexteuropa_varnish_get_settings_item_names() {
  *
  * @see NEPT-2055
  */
-function nexteuropa_delete_varnish_cache_table() {
+function _nexteuropa_delete_varnish_tables() {
+  watchdog('AAA VARNISH', 'Deleting Varnish tables!', array(), WATCHDOG_INFO);
   $tables = array(
     'nexteuropa_varnish_cache_purge_rule',
     NEXTEUROPA_VARNISH_CACHE_TABLE,
@@ -101,6 +102,7 @@ function nexteuropa_delete_varnish_cache_table() {
   foreach ($tables as $table) {
     if (db_table_exists($table)) {
       db_drop_table($table);
+      watchdog('AAA VARNISH', __LINE__ . " - Table %table deleted!", array('%table' => $table), WATCHDOG_DEBUG);
     }
   }
 }

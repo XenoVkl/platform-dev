@@ -123,7 +123,7 @@ function nexteuropa_varnish_uninstall() {
     variable_del($var);
   }
   // Remove related tables.
-  nexteuropa_delete_varnish_cache_table();
+  _nexteuropa_delete_varnish_tables();
 }
 
 /**
@@ -171,25 +171,12 @@ function nexteuropa_varnish_update_7101() {
  * NEPT-799: Add cache table for the purge rules.
  */
 function nexteuropa_varnish_update_7102() {
+  if (db_table_exists(NEXTEUROPA_VARNISH_CACHE_TABLE)) {
+    watchdog('AAA VARNISH', __LINE__ . " - Table %table exists", array('%table' => NEXTEUROPA_VARNISH_CACHE_TABLE), WATCHDOG_DEBUG);
+    return;
+  }
+  
   $schema[NEXTEUROPA_VARNISH_CACHE_TABLE] = drupal_get_schema_unprocessed('system', 'cache');
   $schema[NEXTEUROPA_VARNISH_CACHE_TABLE]['description'] = 'Cache table for the purge rules of nexteuropa_varnish.';
   db_create_table(NEXTEUROPA_VARNISH_CACHE_TABLE, $schema[NEXTEUROPA_VARNISH_CACHE_TABLE]);
-}
-
-/**
- * Delete cache_nexteuropa_varnish table.
- *
- * @see NEPT-2055
- */
-function nexteuropa_delete_varnish_cache_table() {
-  $tables = array(
-    'nexteuropa_varnish_cache_purge_rule',
-    NEXTEUROPA_VARNISH_CACHE_TABLE,
-  );
-
-  foreach ($tables as $table) {
-    if (db_table_exists($table)) {
-      db_drop_table($table);
-    }
-  }
 }
